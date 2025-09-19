@@ -17,7 +17,7 @@ export default function SideBar() {
             </Link>
           </li>
           <li>
-            <Link href="/tools" className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+            <Link href="/mitarbeiter" className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
               <span className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"/>
               
               <span className="text-sm font-medium">Mitarbeiter</span>
