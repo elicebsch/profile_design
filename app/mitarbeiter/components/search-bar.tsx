@@ -26,19 +26,6 @@ export default function Search({ placeholder }: { placeholder: string }) {
     replace(`${pathname}?${params.toString()}`);
   }, 300);
 
-  // function handleSearch(term: string) {
-  //   console.log(`Searching...${term}`);
-
-  //   const params = new URLSearchParams(searchParams);
-
-  //   if(term){
-  //     params.set('query', term);
-  //   } else {
-  //     params.delete('query');
-  //   }
-  //   replace(`${pathname}?${params.toString()}`);
-  // }
-
 
   return (
     <div className="relative flex flex-1 flex-shrink-0">
