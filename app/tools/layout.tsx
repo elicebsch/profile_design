@@ -1,5 +1,5 @@
 import React from 'react'
-import SideBar from '../ui/side-bar_2'
+import SideBar from './components/side-bar_2'
 
 function ToolLayout({children}: {children: React.ReactNode}) {
   return (

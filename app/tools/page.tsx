@@ -1,9 +1,14 @@
-import SideBar from "../ui/side-bar"
+import Search from "./components/search-bar";
+
 
 export default function Page() {
     return (
         <div>
-            <h1 className="p-6">Tool Page</h1>
+            <div>
+                <h1 className="p-6">Mitarbeiter Übersicht</h1>
+            </div>
+            <Search placeholder="Suche nach Mitarbeiter" />
+
         </div>
     );
 }
