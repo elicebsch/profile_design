@@ -1,8 +1,9 @@
 import React from 'react'
 import { handleCreateNewEmployee } from '@/app/actions'
 import Link from 'next/link'
-import SkillTable from '../../components/Tables/table-skills'
-import ProjectTable from '../../components/Tables/table-projects'
+import SkillTable from '@/app/components/Tables/table-skills'
+import ProjectTable from '@/app/components/Tables/table-projects'
+
 
 
 
@@ -41,10 +42,6 @@ function CreateNewEmployee() {
         <button type='submit' className=''>Submit</button>
 
       </form>
-
-
-
-
 
     </div>
   )

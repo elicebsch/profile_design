@@ -1,6 +1,14 @@
-import React from 'react'
 
-function SkillTable() {
+
+import React from 'react'
+import { db } from '@/src'
+import { skillTable } from '@/src/db/schema'
+
+
+async function SkillTable() {
+
+
+  
   return (
     <div>
       <table>

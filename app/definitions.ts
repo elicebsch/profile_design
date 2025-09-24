@@ -10,6 +10,15 @@ export type Skill = {
 }
 
 export type Project = {
-    name: string,
-    date: Date,
+    market?: string,
+    project_name: string,
+    description?: string,
+    start?: Date,
+    end?: Date,
+    status?: 'completed' | 'inProgress',
+    priority?: number,
+    project_manager?: string
+    progress?: number,
+    customer?: string,
+    comment?: string
 }

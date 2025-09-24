@@ -1,0 +1,1 @@
+ALTER TABLE "mitarbeiter" ADD COLUMN "kuerzel" varchar(256) NOT NULL;

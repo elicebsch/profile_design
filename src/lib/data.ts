@@ -23,4 +23,8 @@ export function fetchEmployeesBySearchParams(searchParams: string = 'Mustermann'
         )
     );
 }
+
+export function fetchSkills(){
+    
+}
   

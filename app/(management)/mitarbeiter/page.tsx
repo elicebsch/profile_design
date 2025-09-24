@@ -1,7 +1,7 @@
-import Search from "../components/search-bar";
-import CreateEmployee from "../components/create_employee";
-import EmployeesTable from "../components/Tables/table-employees";
-import { getSearchParams } from "../components/search-bar";
+
+import Search from "@/app/components/search-bar";
+import CreateEmployee from "@/app/components/create_employee";
+import EmployeesTable from "@/app/components/Tables/table-employees";
 
 export default async function Page(props: {
     searchParams?: Promise<{

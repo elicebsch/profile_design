@@ -36,3 +36,12 @@ button{
 input{
   @apply w-full px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
 }
+
+.input-base {
+  @apply border rounded px-3 py-2 text-sm bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+form{
+  @apply flex-col space-y-0.5
+}
+

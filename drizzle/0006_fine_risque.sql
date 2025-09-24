@@ -1,0 +1,1 @@
+ALTER TABLE "mitarbeiter" ALTER COLUMN "kuerzel" SET DEFAULT 'unbekannt';
