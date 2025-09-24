@@ -1,20 +1,30 @@
-import Search from "./components/search-bar";
-import CreateEmployee from "./components/add_employee";
-import EmployeesTable from "./components/table-employees";
+import Search from "../components/search-bar";
+import CreateEmployee from "../components/create_employee";
+import EmployeesTable from "../components/Tables/table-employees";
+import { getSearchParams } from "../components/search-bar";
 
-export default function Page() {
+export default async function Page(props: {
+    searchParams?: Promise<{
+        query?: string;
+        page?: string;
+    }>;
+}) {
+
+    const searchParams = await props.searchParams;
+
     return (
         <div>
-            <div>
-                <h1 className="p-6">Mitarbeiter Übersicht</h1>
-            </div>
+
             <div className="flex">
                 <Search placeholder="Suche nach Mitarbeiter" />
-                <CreateEmployee/>
+                <CreateEmployee />
             </div>
             <div>
+                <div>
+                    <h1 className="p-6">Mitarbeiter Übersicht</h1>
+                </div>
                 {/* Show Table of Employees */}
-                <EmployeesTable/>
+                <EmployeesTable searchParams={searchParams} />
 
             </div>
 

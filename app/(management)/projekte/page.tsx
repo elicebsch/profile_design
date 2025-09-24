@@ -1,6 +1,6 @@
 import React from 'react'
 
-function EmployeesTable() {
+function MitarbeiterPage() {
   return (
     <div>
       
@@ -8,4 +8,4 @@ function EmployeesTable() {
   )
 }
 
-export default EmployeesTable
+export default MitarbeiterPage
