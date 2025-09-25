@@ -2,6 +2,10 @@ export type Employee = {
     id?: number,
     lastName: string,
     firstName: string,
+    kuerzel: string,
+    // skill?: Skill, // eigentlich will ich das so haben und nicht getrennt, hat mir aber erstmal viel kaputt gemacht, also später nochmal anpassen
+    skill_name?: string
+    skill_level?: string
 }
 
 export type Skill = {
@@ -10,6 +14,7 @@ export type Skill = {
 }
 
 export type Project = {
+    id?: number,
     market?: string,
     project_name: string,
     description?: string,
@@ -22,3 +27,4 @@ export type Project = {
     customer?: string,
     comment?: string
 }
+

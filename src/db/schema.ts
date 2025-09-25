@@ -15,10 +15,11 @@ import { pgEnum } from "drizzle-orm/pg-core";
 export const mitarbeiterTable = table("mitarbeiter", {
   id: t.integer().primaryKey().generatedByDefaultAsIdentity(),
   firstName: t.varchar({ length: 255 }).notNull(),
-  lastName: t.varchar({length: 255}).notNull(),
-  kuerzel: t.varchar({length: 255}).notNull(),
-}
-);
+  lastName: t.varchar({ length: 255 }).notNull(),
+  kuerzel: t.varchar({ length: 255 }).notNull(),
+  skill_name: t.varchar({ length: 255 }),
+  skill_level: t.varchar({ length: 255 })
+});
 
 export const statusEnum = pgEnum('status', ['completed', 'inProgress']);
 
@@ -39,6 +40,6 @@ export const projectTable = table("projects", {
 
 export const skillTable = table("skills", {
   id: t.integer().primaryKey().generatedByDefaultAsIdentity(),
-  skill_name: t.varchar('name', {length: 100}),
+  skill_name: t.varchar('name', { length: 100 }),
   skill_level: t.integer('level'),
 })

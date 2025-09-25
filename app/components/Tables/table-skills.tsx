@@ -5,7 +5,7 @@ import { db } from '@/src'
 import { skillTable } from '@/src/db/schema'
 
 
-async function SkillTable() {
+function SkillTable() {
 
 
   

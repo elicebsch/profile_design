@@ -8,7 +8,7 @@ import EmployeeCard from '../employee-card';
 
 // soll aus EmployeeCards bestehen
 
-async function EmployeesTable({ searchParams }
+async function EmployeesTable({ searchParams } 
   : {
     searchParams?
     : {

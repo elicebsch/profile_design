@@ -1,11 +1,31 @@
 import React from 'react'
+import ProjectForm from '@/app/components/form/create_project-form'
+import Link from 'next/link'
+import ProjectTable from '@/app/components/tables/table-projects'
+import { SearchParams } from 'next/dist/server/request/search-params'
+import Search from '@/app/components/search-bar'
 
-function MitarbeiterPage() {
+function ProjectPage({ searchParams }: { searchParams: SearchParams }) {
   return (
-    <div>
-      
+    <div className='space-y-1'>
+
+      <div className='flex gap-2 p-2'>
+
+        <Search placeholder='Suche nach Projekten' />
+
+        <Link href='/projekte/create'>
+          <button>Projekt hinzufügen</button>
+        </Link>
+
+      </div>
+
+      <div className='bg-white rounded-2xl flex-col space-y-2'>
+        <h1 className="p-6 shadow-md rounded-ss-2xl">Projekt Übersicht</h1>
+        <ProjectTable searchParams={searchParams} />
+      </div>
+
     </div>
   )
 }
 
-export default MitarbeiterPage
+export default ProjectPage
