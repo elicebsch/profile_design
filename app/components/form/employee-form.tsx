@@ -7,8 +7,9 @@ import { useForm } from 'react-hook-form'
 import { Employee } from '@/app/definitions'
 import { Project } from '@/app/definitions'
 import { handleCreateNewEmployee } from '@/app/actions'
+import { required } from 'zod/v4-mini'
 
-function EmployeeForm({ projects }: { projects: Project[] }) {
+export default function EmployeeForm({ projects }: { projects: Project[] }) {
 
     const { register, handleSubmit, formState: { errors } } = useForm<Employee>()
 
@@ -18,19 +19,20 @@ function EmployeeForm({ projects }: { projects: Project[] }) {
 
                 <div>
                     {/* <label htmlFor="Vorname">Vorname</label> */}
-                    <input {...register("firstName", {required: 'Vorname erforderlich!'})} type="text" placeholder='Vorname' />
+                    <input {...register("firstName", { required: 'Vorname erforderlich!' })} type="text" placeholder='Vorname' />
                     <span className='text-red-600'>{errors.firstName?.message}</span>
                 </div>
 
                 <div>
                     {/* <label htmlFor="Name">Name</label> */}
-                    <input {...register("lastName", {required: 'Nachname erforderlich!'})} type="text" placeholder='Name' />
+                    <input {...register("lastName", { required: 'Nachname erforderlich!' })} type="text" placeholder='Name' />
                     <span className='text-red-600'>{errors.lastName?.message}</span>
                 </div>
 
                 <div>
                     {/* <label htmlFor="kuerzel">Kürzel</label> */}
-                    <input {...register("kuerzel")} type="text" placeholder='Kürzel' />
+                    <input {...register("kuerzel", {required: 'Kürzel erforderlich!'}) } type="text" placeholder='Kürzel' />
+                    <span className='text-red-600'>{errors.kuerzel?.message}</span>
                 </div>
 
                 <div>
@@ -64,5 +66,3 @@ function EmployeeForm({ projects }: { projects: Project[] }) {
         </div>
     )
 }
-
-export default EmployeeForm

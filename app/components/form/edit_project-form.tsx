@@ -10,7 +10,7 @@ import { useParams } from 'next/navigation';
 
 export default function EditProjectForm({ project }: { project: Project }) { // hatte die Idee das hier als edit und create vorlage zu nehmen und wenn es true ist oder so dann wird das selbe nur mit defaultValues ausgeführt
 
-    const { id } = useParams();
+    // const { id } = useParams();
     const { register, handleSubmit, formState: { errors } } = useForm<Project>();
 
 

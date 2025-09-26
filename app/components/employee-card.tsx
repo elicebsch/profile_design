@@ -19,6 +19,7 @@ function EmployeeCard({
     id,
     lastName,
     firstName,
+    kuerzel
 
 }: Employee) {
 

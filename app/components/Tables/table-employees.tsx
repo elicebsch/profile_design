@@ -4,6 +4,7 @@ import { db } from '@/src'
 import { fetchEmployeesById, fetchEmployeesBySearchParams } from '@/src/lib/data'
 import { title } from 'process';
 import EmployeeCard from '../employee-card';
+import { Employee } from '@/app/definitions';
 
 
 // soll aus EmployeeCards bestehen
@@ -22,7 +23,7 @@ async function EmployeesTable({ searchParams }
   const currentPage = Number(searchParams?.page) || 1;
 
   const data = await fetchEmployeesBySearchParams(query);
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className='flex-col space-y-2'>
@@ -33,6 +34,7 @@ async function EmployeesTable({ searchParams }
             id={e.id}
             firstName={e.firstName}
             lastName={e.lastName}
+            kuerzel={e.kuerzel}
           />
         </div>
       ))}

@@ -5,7 +5,15 @@ import ProjectTable from '@/app/components/tables/table-projects'
 import { SearchParams } from 'next/dist/server/request/search-params'
 import Search from '@/app/components/search-bar'
 
-function ProjectPage({ searchParams }: { searchParams: SearchParams }) {
+export default async function ProjectPage(props: { 
+  searchParams?: Promise<{
+      query?: string;
+      page?: string;
+  }>;
+}) {
+
+    const searchParams = await props.searchParams;
+    
   return (
     <div className='space-y-1'>
 
@@ -28,4 +36,4 @@ function ProjectPage({ searchParams }: { searchParams: SearchParams }) {
   )
 }
 
-export default ProjectPage
+

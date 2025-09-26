@@ -85,6 +85,20 @@
       "when": 1758790331313,
       "tag": "0011_faulty_victor_mancha",
       "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1758886182569,
+      "tag": "0012_glorious_vindicator",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "7",
+      "when": 1758886428385,
+      "tag": "0013_fair_jackpot",
+      "breakpoints": true
     }
   ]
 }

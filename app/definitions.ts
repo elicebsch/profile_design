@@ -1,11 +1,11 @@
+ // skill?: Skill, // eigentlich will ich das so haben und nicht getrennt, hat mir aber erstmal viel kaputt gemacht, also später nochmal anpassen
 export type Employee = {
-    id?: number,
+    id: number,
     lastName: string,
     firstName: string,
     kuerzel: string,
-    // skill?: Skill, // eigentlich will ich das so haben und nicht getrennt, hat mir aber erstmal viel kaputt gemacht, also später nochmal anpassen
-    skill_name?: string
-    skill_level?: string
+    skill_name?: string,
+    skill_level?: 1 | 2 | 3,
 }
 
 export type Skill = {

@@ -12,7 +12,7 @@ import { pgEnum } from "drizzle-orm/pg-core";
 //   email: t.varchar({ length: 255 }).notNull().unique(),
 // });
 
-export const mitarbeiterTable = table("mitarbeiter", {
+export const employeeTable = table("mitarbeiter", {
   id: t.integer().primaryKey().generatedByDefaultAsIdentity(),
   firstName: t.varchar({ length: 255 }).notNull(),
   lastName: t.varchar({ length: 255 }).notNull(),

@@ -2,9 +2,10 @@
 import Search from "@/app/components/search-bar";
 import CreateEmployee from "@/app/components/create_employee";
 import EmployeesTable from "@/app/components/tables/table-employees";
-import { fetchProjectsById } from "@/src/lib/data";
+import { fetchProjects, fetchProjectsById } from "@/src/lib/data";
 
-export default async function MitarbeiterPage(props: { // searchParams und params werden automatisch von nextJS übergeben
+// searchParams und params werden automatisch von nextJS übergeben
+export default async function MitarbeiterPage(props: { 
     searchParams?: Promise<{
         query?: string;
         page?: string;
@@ -13,13 +14,13 @@ export default async function MitarbeiterPage(props: { // searchParams und param
 
     const searchParams = await props.searchParams;
 
-    const projects = await fetchProjectsById();
+    const projects = await fetchProjects();
 
     return (
         <div>
 
             <div className="flex">
-                <Search placeholder="Suche nach Mitarbeiter" /> {/* not synchronized yet */}
+                <Search placeholder="Suche nach Mitarbeiter" /> 
                 <CreateEmployee />
             </div>
             <div>
