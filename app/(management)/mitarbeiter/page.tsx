@@ -2,7 +2,7 @@
 import Search from "@/app/components/search-bar";
 import CreateEmployee from "@/app/components/create_employee";
 import EmployeesTable from "@/app/components/tables/table-employees";
-import { fetchProjects, fetchProjectsById } from "@/src/lib/data";
+import { fetchProjects, fetchProjectById } from "@/src/lib/data";
 
 // searchParams und params werden automatisch von nextJS übergeben
 export default async function MitarbeiterPage(props: { 
@@ -19,7 +19,7 @@ export default async function MitarbeiterPage(props: {
     return (
         <div>
 
-            <div className="flex">
+            <div className="flex gap-2 p-2">
                 <Search placeholder="Suche nach Mitarbeiter" /> 
                 <CreateEmployee />
             </div>

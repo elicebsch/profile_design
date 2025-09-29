@@ -1,4 +1,4 @@
-import { fetchProjects, fetchProjectsById, fetchProjectsBySearchParams } from '@/src/lib/data'
+import { fetchProjects, fetchProjectById, fetchProjectsBySearchParams } from '@/src/lib/data'
 import { SearchParams } from 'next/dist/server/request/search-params'
 import React from 'react'
 import ProjectCard from '../project-card';
@@ -26,8 +26,7 @@ async function ProjectTable({ searchParams }
           key={p.id}>
           <div className=''>
             <ProjectCard
-              id={p.id}
-              project_name={p.project_name}
+              project={p}
             />
           </div>
         </ul>

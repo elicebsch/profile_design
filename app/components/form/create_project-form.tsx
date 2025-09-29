@@ -2,18 +2,18 @@
 
 
 import React from 'react'
-import { handleAddingProjects } from '@/app/actions'
+import { handleCreateProject } from '@/app/actions'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { Project } from '@/app/definitions';
+import { Project } from '@/app/validation/fetch-validation'
 
 
-function ProjectForm() { // hatte die Idee das hier als edit und create vorlage zu nehmen und wenn es true ist oder so dann wird das selbe nur mit defaultValues ausgeführt
+export default function ProjectForm() { // hatte die Idee das hier als edit und create vorlage zu nehmen und wenn es true ist oder so dann wird das selbe nur mit defaultValues ausgeführt
 
   const { register, handleSubmit, formState: { errors } } = useForm<Project>();
 
   return (
     <div>
-      <form onSubmit={handleSubmit((data) => { console.log(data); handleAddingProjects(data) })}>
+      <form onSubmit={handleSubmit((data) => { console.log(data); handleCreateProject(data) })}>
 
         <input {...register('market')} placeholder="Markt" />
         <input {...register('project_name', { required: 'Projektname ist erforderlich!' })} placeholder="Projektname" />
@@ -26,7 +26,7 @@ function ProjectForm() { // hatte die Idee das hier als edit und create vorlage 
           <option value="completed">Abgeschlossen</option>
           <option value="inProgress">In Bearbeitung</option>
         </select>
-        <input type="number" {...register('priority')} placeholder="Priorität" />
+        <input type="number" {...register('priority')} placeholder="Priorität"/>
         <input {...register('project_manager')} placeholder="Projektleiter" />
 
         <input type="number" min='0' max='100' {...register('progress')} placeholder="Fortschritt (%)" />
@@ -43,5 +43,4 @@ function ProjectForm() { // hatte die Idee das hier als edit und create vorlage 
   )
 }
 
-export default ProjectForm
 

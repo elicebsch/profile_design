@@ -21,7 +21,7 @@ export const employeeTable = table("mitarbeiter", {
   skill_level: t.varchar({ length: 255 })
 });
 
-export const statusEnum = pgEnum('status', ['completed', 'inProgress']);
+export const statusEnum = pgEnum('status', ['completed', 'inProgress', '']);
 
 export const projectTable = table("projects", {
   id: t.integer().primaryKey().generatedByDefaultAsIdentity(),

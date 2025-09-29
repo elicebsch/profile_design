@@ -1,32 +1,79 @@
-import { z } from 'zod';
-import { createInsertSchema, createSelectSchema} from 'drizzle-zod';
+import { keyof, z } from 'zod';
+import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
 import { employeeTable, projectTable, skillTable } from '@/src/db/schema';
+import { undefinedDataA } from '@hookform/resolvers/ajv/src/__tests__/__fixtures__/data-errors.js';
 
 // für (optionale) leere Input Felder defaultValue auf Null setzen statt auf einen (globale) definierten default-Wert; 
 // --> Best-Practice!
 
-export const selectEmployeeSchema = createSelectSchema(employeeTable);
-export type Employee = z.infer<typeof selectEmployeeSchema>;
-
-export const insertSkillSchema = createInsertSchema(skillTable, {
-  skill_name: (z) => z.min(1).max(100),
-  skill_level: (z) => z.min(1).max(3),
-});
-export type NewSkill = z.infer<typeof insertSkillSchema>;
 
 
 export const insertEmployeeSchema = createInsertSchema(employeeTable);
-export type NewEmployee = z.infer<typeof  insertEmployeeSchema>;
+export type NewEmployee = z.infer<typeof insertEmployeeSchema>;
 
 export const updateEmployeeSchema = createInsertSchema(employeeTable, {
-  
+
 });
 
 
+export const insertProjectSchema = createInsertSchema(projectTable, {
+  progress: z.preprocess(
+    val => {
+      if (val === "" || val == null) return null; // oder undefined
+      return Number(val);
+    },
+    z.number().nullable()
+  ),
+  priority: z.preprocess(
+    val => {
+      if (val === "" || val == null) return null;
+      return Number(val);
+    }, z.number().nullable()
+  ),
+  start: z.preprocess(
+    val =>
+      val === "" ? null : val,
+    z.date().nullable()),
+  end: z.preprocess(
+    val =>
+      val === "" ? null : val,
+    z.date().nullable()),
+  status: z.preprocess(
+    val => val === "" ? undefined : val,
+    z.enum(["completed", "inProgress"]).optional()
+  )
 
-export const insertProjectSchema = createInsertSchema(projectTable); // hier kann ich auch ein Objekt mitgeben in dem die zu validierenden Felder weitere Eigenschaften bekommen sollen, sowie defaultWerte
+}); // hier kann ich auch ein Objekt mitgeben in dem die zu validierenden Felder weitere Eigenschaften bekommen sollen, sowie defaultWerte
 export type NewProject = z.infer<typeof insertProjectSchema>;
 
+export const updateProjectSchema = createInsertSchema(projectTable, {
+  progress: z.preprocess(
+    val => {
+      if (val === "" || val == null) return null; // oder undefined
+      return Number(val);
+    },
+    z.number().nullable()
+  ),
+  priority: z.preprocess(
+    val => {
+      if (val === "" || val == null) return null;
+      return Number(val);
+    }, z.number().nullable()
+  ),
+  start: z.preprocess(
+    val =>
+      val === "" ? null : val,
+    z.date().nullable()),
+  end: z.preprocess(
+    val =>
+      val === "" ? null : val,
+    z.date().nullable()),
+  status: z.preprocess(
+    val => val === "" ? undefined : val,
+    z.enum(["completed", "inProgress"]).optional()
+  )
+
+});
 
 // export const skillSchema = z.object({
 //   name: z.string().min(1),

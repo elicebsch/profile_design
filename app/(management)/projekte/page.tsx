@@ -27,8 +27,8 @@ export default async function ProjectPage(props: {
 
       </div>
 
-      <div className='bg-white rounded-2xl flex-col space-y-2'>
-        <h1 className="p-6 shadow-md rounded-ss-2xl">Projekt Übersicht</h1>
+      <div className=''>
+        <h1 className="p-6">Projekt Übersicht</h1>
         <ProjectTable searchParams={searchParams} />
       </div>
 

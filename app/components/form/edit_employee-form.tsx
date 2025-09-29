@@ -1,17 +1,16 @@
 'use client'
 
-import { Employee } from '@/app/definitions'
-import { handleAddingProjects, handleCreateNewEmployee, handleUpdateEmployee } from '@/app/actions'
+
+import { handleCreateProject, handleCreateNewEmployee, handleUpdateEmployee } from '@/app/actions'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Project } from '@/app/definitions';
 import React from 'react'
-import { FetchedEmployee } from '@/app/validation/fetch-validation';
+import { Employee } from '@/app/validation/fetch-validation'
 import { useParams } from 'next/navigation';
 
-export default function EditEmployeeForm({ data }: { data: FetchedEmployee }) {
+export default function EditEmployeeForm({ data }: { data: Employee }) {
 
-    const { register, handleSubmit, formState: { errors } } = useForm<FetchedEmployee>();
+    const { register, handleSubmit, formState: { errors } } = useForm<Employee>();
+
     const {id} = useParams();
     const ident = Number(id);
 

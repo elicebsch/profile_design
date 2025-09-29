@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { db } from '@/src'
-import { fetchEmployeesById, fetchEmployeesBySearchParams } from '@/src/lib/data'
+import { fetchEmployeeById, fetchEmployeesBySearchParams } from '@/src/lib/data'
 import { title } from 'process';
 import EmployeeCard from '../employee-card';
 import { Employee } from '@/app/definitions';

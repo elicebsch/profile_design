@@ -4,10 +4,10 @@ import React from 'react'
 
 import { useForm } from 'react-hook-form'
 
-import { Employee } from '@/app/definitions'
-import { Project } from '@/app/definitions'
+import { Employee } from '@/app/validation/fetch-validation'
+import { Project } from '@/app/validation/fetch-validation'
 import { handleCreateNewEmployee } from '@/app/actions'
-import { required } from 'zod/v4-mini'
+
 
 export default function EmployeeForm({ projects }: { projects: Project[] }) {
 
@@ -40,7 +40,7 @@ export default function EmployeeForm({ projects }: { projects: Project[] }) {
                     {/* <SkillTable /> */}
                     <div>
                         <input {...register("skill_name")} type="text" placeholder='Skill' />
-                        <input {...register("skill_level")} type="number" placeholder='Level' />
+                        <input {...register("skill_level")} type="text" placeholder='Level' />
                         {/* Button */}
                     </div>
                 </div>

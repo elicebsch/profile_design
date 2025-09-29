@@ -1,14 +1,13 @@
 'use client'
 
 import React from 'react'
-import { Employee } from '@/app/definitions'
+
+import { Employee } from '../validation/fetch-validation';
 import { lusitana } from '../ui/fonts';
 import { PencilIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { DocumentTextIcon } from '@heroicons/react/24/solid';
 import { useParams } from 'next/navigation';
-
-
 
 
 // Das soll hier auf die Mitarbeiter-Startseite in die EmployeeTable

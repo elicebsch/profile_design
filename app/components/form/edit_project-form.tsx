@@ -2,9 +2,9 @@
 
 
 import React from 'react'
-import { handleAddingProjects } from '@/app/actions'
+import { handleCreateProject, handleUpdateProject } from '@/app/actions'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { Project } from '@/app/definitions';
+import { Project } from '@/app/validation/fetch-validation'
 import { useParams } from 'next/navigation';
 
 
@@ -13,48 +13,55 @@ export default function EditProjectForm({ project }: { project: Project }) { // 
     // const { id } = useParams();
     const { register, handleSubmit, formState: { errors } } = useForm<Project>();
 
+    const {id} = useParams();
+    const ident = Number(id);
+
 
     return (
         <div>
-            <form onSubmit={handleSubmit((data) => { console.log(data); handleAddingProjects(data) })}>
+            <form onSubmit={handleSubmit((data) => { console.log(data); handleUpdateProject(data, ident) })}>
 
                 <input {...register('market')} placeholder="Markt"
-                    defaultValue={project.market}
+                    defaultValue={project.market ?? ''}
                 />
                 <input {...register('project_name', { required: 'Projektname ist erforderlich!' })} placeholder="Projektname"
                     defaultValue={project.project_name}
                 />
                 <p className='text-red-600'>{errors.project_name?.message}</p>
                 <input {...register('description')} placeholder="Beschreibung"
-                    defaultValue={project.description}
+                    defaultValue={project.description ?? ''}
                 />
                 <input type="date" {...register('start')}
-                    defaultValue={project.start?.toISOString().slice(0, 10)}
+                    defaultValue={project.start ?? ''}
                 />
                 <input type="date" {...register('end')}
-                    defaultValue={project.end?.toISOString().slice(0, 10)}
+                    defaultValue={project.end ?? ''}
                 />
                 <select {...register('status')} className='input-base'
-                    defaultValue={project.status}>
+                    defaultValue={project.status ?? ''}>
                     <option value="">Status wählen</option>
                     <option value="completed">Abgeschlossen</option>
                     <option value="inProgress">In Bearbeitung</option>
                 </select>
                 <input type="number" {...register('priority')} placeholder="Priorität"
-                    defaultValue={project.priority}
+                    defaultValue={project.priority ?? ''}
                 />
                 <input {...register('project_manager')} placeholder="Projektleiter"
-                    defaultValue={project.project_manager}
+                    defaultValue={project.project_manager ?? ''}
                 />
 
                 <input type="number" min='0' max='100' {...register('progress')} placeholder="Fortschritt (%)"
-                    defaultValue={project.progress}
+                    defaultValue={project.progress ?? ''}
                 />
                 {/* <label htmlFor="progress">Fortschritt</label>
                 <input type="range" min="0" max="100" step="5" {...register('progress')} placeholder="Fortschritt (%)" /> */}
 
-                <input {...register('customer')} placeholder="Kunde" />
-                <input {...register('comment')} placeholder="Bemerkung" />
+                <input {...register('customer')} placeholder="Kunde" 
+                defaultValue={project.customer ?? ''}
+                />
+                <input {...register('comment')} placeholder="Bemerkung" 
+                defaultValue={project.comment ?? ''}
+                />
 
 
                 <button type='submit'>Speichern</button>
