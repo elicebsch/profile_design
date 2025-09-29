@@ -36,7 +36,7 @@ import { eq } from "drizzle-orm";
 
 export async function handleCreateNewEmployee(formData: Employee) {
 
-  const parsedData = insertEmployeeSchema.parse(formData);
+  const parsedData = insertEmployeeSchema.parse(formData); 
   await db.insert(employeeTable).values(parsedData);
 
   revalidatePath('/mitarbeiter');

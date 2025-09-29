@@ -9,6 +9,7 @@ const fetchEmployeeSchema = z.object({
     skill_level: z.coerce.number().int().nullable().optional()
 });
 
+
 export const employeeSchema = fetchEmployeeSchema.transform((db => ({
     id: db.id,
     lastName: db.lastName,
@@ -19,5 +20,7 @@ export const employeeSchema = fetchEmployeeSchema.transform((db => ({
     ? (db.skill_level as 1 | 2 | 3)
     : undefined,
 })));
+
+export const employeesSchema = z.array(employeeSchema);
 
 export type FetchedEmployee = z.infer<typeof employeeSchema>;

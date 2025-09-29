@@ -14,7 +14,7 @@ export type Skill = {
 }
 
 export type Project = {
-    id?: number,
+    id: number,
     market?: string,
     project_name: string,
     description?: string,

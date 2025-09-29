@@ -1,9 +1,12 @@
 import { z } from 'zod';
-import { createInsertSchema } from 'drizzle-zod';
+import { createInsertSchema, createSelectSchema} from 'drizzle-zod';
 import { employeeTable, projectTable, skillTable } from '@/src/db/schema';
 
 // für (optionale) leere Input Felder defaultValue auf Null setzen statt auf einen (globale) definierten default-Wert; 
 // --> Best-Practice!
+
+export const selectEmployeeSchema = createSelectSchema(employeeTable);
+export type Employee = z.infer<typeof selectEmployeeSchema>;
 
 export const insertSkillSchema = createInsertSchema(skillTable, {
   skill_name: (z) => z.min(1).max(100),
