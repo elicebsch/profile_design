@@ -1,11 +1,12 @@
 'use client'
 
 
-import { handleCreateProject, handleCreateNewEmployee, handleUpdateEmployee } from '@/app/actions'
+import { handleCreateProject, handleCreateNewEmployee, handleUpdateEmployee, handleDeleteEmployee } from '@/app/actions'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import React from 'react'
 import { Employee } from '@/app/validation/fetch-validation'
 import { useParams } from 'next/navigation';
+import Link from 'next/link'
 
 export default function EditEmployeeForm({ data }: { data: Employee }) {
 
@@ -71,7 +72,11 @@ export default function EditEmployeeForm({ data }: { data: Employee }) {
                 </div> */}
 
                 <button type='submit' className=''>Submit</button>
-
+                
+            </form>
+            <form action={handleDeleteEmployee}>
+                <input type="hidden" name='id' value={data.id} />
+                <button type='submit' className='bg-red-600'>Delete</button>
             </form>
         </div>
     )

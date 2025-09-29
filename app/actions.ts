@@ -2,7 +2,7 @@
 
 import { db } from "@/src"
 
-import * as z from 'zod';
+import {z} from 'zod';
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -56,11 +56,20 @@ export async function handleUpdateEmployee(formData: Employee, id: number) { //w
     await db.update(employeeTable).set(parsedData.data).where(eq(employeeTable.id, parsedData.data.id));
   }
   
-
-
   revalidatePath('/mitarbeiter');
   redirect('/mitarbeiter');
 
+}
+
+export async function handleDeleteEmployee(formData: FormData){
+
+  const id = formData.get('id');
+
+  await db.delete(employeeTable).where(eq(employeeTable.id, Number(id)));
+
+  revalidatePath('/mitarbeiter');
+  redirect('/mitarbeiter');
+  
 }
 
 
@@ -84,10 +93,50 @@ export async function handleUpdateProject(formData: Project, id: number){
   if(!parsedData.success){
     parsedData.error;
   }else{
-    await db.update(projectTable).set(parsedData.data).where(eq(projectTable.id, parsedData.data.id));
+    await db.update(projectTable).set(parsedData.data).where(eq(projectTable.id, parsedData.data.id)); // es gibt noch Probleme mit dem Date
   }
 
   revalidatePath('/projekte');
   redirect('/projekte');
   
+}
+
+// export async function handleUpdateProject(formData: Project, id: number) {
+
+//   const parsedData = updateProjectSchema.extend({
+//     id: z.number().default(id),
+//   }).safeParse(formData);
+
+//   if (!parsedData.success) {
+//     parsedData.error;
+//     console.error(parsedData.error)
+//     return
+//   }
+
+//   const parsed = parsedData.data;
+
+//   // Mapping für Drizzle (Date -> string | null)
+//   const dbData = {
+//     ...parsed,
+//     start: parsed.start ? parsed.start.toISOString().split("T")[0] : null,
+//     end: parsed.end ? parsed.end.toISOString().split("T")[0] : null,
+//   };
+
+//   await db.update(projectTable).set(dbData).where(eq(projectTable.id, parsedData.data.id));
+
+
+//   revalidatePath('/projekte');
+//   redirect('/projekte');
+
+// }
+
+export async function handleDeleteProject(formData: FormData){
+
+  const id = formData.get('id');
+// Fall einbauen falls id nicht existiert bzw. ungültig ist
+  await db.delete(projectTable).where(eq(projectTable.id, Number(id)));
+
+  revalidatePath('/projekte');
+  redirect('/projekte');
+
 }

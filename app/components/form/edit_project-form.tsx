@@ -2,7 +2,7 @@
 
 
 import React from 'react'
-import { handleCreateProject, handleUpdateProject } from '@/app/actions'
+import { handleCreateProject, handleDeleteProject, handleUpdateProject } from '@/app/actions'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { Project } from '@/app/validation/fetch-validation'
 import { useParams } from 'next/navigation';
@@ -65,6 +65,10 @@ export default function EditProjectForm({ project }: { project: Project }) { // 
 
 
                 <button type='submit'>Speichern</button>
+            </form>
+            <form action={handleDeleteProject}>
+                <input type="hidden" name='id' value={project.id} />
+                <button type='submit'>Delete</button>
             </form>
         </div>
     )
