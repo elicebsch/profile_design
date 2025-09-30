@@ -8,9 +8,9 @@ import { db } from '@/src/index';
 import { employeeTable, projectTable, skillTable } from '@/src/db/schema';
 import { eq, like, or } from 'drizzle-orm';
 import { Project, selectProjectSchema, selectProjectsSchema } from '@/app/validation/fetch-validation';
-import { Employee, selectEmployeesSchema } from '@/app/validation/fetch-validation';
+import { Employee, selectEmployeesSchema, selectEmployeeSchema } from '@/app/validation/fetch-validation';
+import { Skill, selectSkillSchema, selectSkillsSchema } from '@/app/validation/fetch-validation';
 
-import { selectEmployeeSchema } from '@/app/validation/fetch-validation';
 
 
 // ah also jetzt beim development meckert er immer, aber beim deployment kommt einfach rein was reinkommt und etwas passiert mit den Daten ja?
@@ -82,3 +82,13 @@ export async function fetchProjectsBySearchParams(searchParams: string = 'TestPr
 
     return parsedData;
 }
+
+export async function fetchSkills(): Promise<Skill[]>{
+
+    const data = await db.select().from(skillTable);
+
+    const parsedData = selectSkillsSchema.parse(data);
+
+    return parsedData;
+    
+};

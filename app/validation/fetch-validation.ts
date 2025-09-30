@@ -1,18 +1,26 @@
-import { z } from 'zod'
+import { number, z } from 'zod'
 
 import { createSelectSchema } from 'drizzle-zod';
 
-import { employeeTable, projectTable } from '@/src/db/schema';
+import { employeeTable, projectTable, skillTable } from '@/src/db/schema';
 
-export const selectEmployeeSchema = createSelectSchema(employeeTable);
+export const selectSkillSchema = createSelectSchema(skillTable).extend({skill_level: z.number()});
+export const selectSkillsSchema = z.array(selectSkillSchema);
+export type Skill = z.infer<typeof selectSkillSchema>;
+
+export const selectProjectSchema = createSelectSchema(projectTable);
+export const selectProjectsSchema = z.array(selectProjectSchema);
+export type Project = z.infer<typeof selectProjectSchema>;
+
+export const selectEmployeeSchema = createSelectSchema(employeeTable).extend({
+    skills: selectSkillsSchema,
+    projects: selectProjectsSchema,
+});
 export const selectEmployeesSchema = z.array(selectEmployeeSchema);
 export type Employee = z.infer<typeof selectEmployeeSchema>;
 // export type Employees = z.infer<typeof selectEmployeesSchema>; --> äquivalent zu Employee[]
 
 
-export const selectProjectSchema = createSelectSchema(projectTable);
-export const selectProjectsSchema = z.array(selectProjectSchema);
-export type Project = z.infer<typeof selectProjectSchema>;
 
 
 // const fetchEmployeeSchema = z.object({

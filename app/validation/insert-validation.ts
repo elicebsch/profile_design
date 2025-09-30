@@ -1,20 +1,20 @@
-import { keyof, z } from 'zod';
-import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
+import { z } from 'zod';
+import { createInsertSchema, createUpdateSchema } from 'drizzle-zod';
 import { employeeTable, projectTable, skillTable } from '@/src/db/schema';
-import { undefinedDataA } from '@hookform/resolvers/ajv/src/__tests__/__fixtures__/data-errors.js';
+import { selectProjectsSchema, selectSkillsSchema } from './fetch-validation';
+
 
 // für (optionale) leere Input Felder defaultValue auf Null setzen statt auf einen (globale) definierten default-Wert; 
 // --> Best-Practice!
 
+// Skills
 
+export const insertSkillSchema = createInsertSchema(skillTable).extend({skill_level: z.number()});
+export const insertSkillsSchema = z.array(insertSkillSchema);
 
-export const insertEmployeeSchema = createInsertSchema(employeeTable);
-export type NewEmployee = z.infer<typeof insertEmployeeSchema>;
+export const updateSkillSchema = createUpdateSchema(skillTable);
 
-export const updateEmployeeSchema = createInsertSchema(employeeTable, {
-
-});
-
+// Project
 
 export const insertProjectSchema = createInsertSchema(projectTable, {
   progress: z.preprocess(
@@ -44,6 +44,8 @@ export const insertProjectSchema = createInsertSchema(projectTable, {
   )
 
 }); // hier kann ich auch ein Objekt mitgeben in dem die zu validierenden Felder weitere Eigenschaften bekommen sollen, sowie defaultWerte
+export const insertProjectsSchema = z.array(insertProjectSchema);
+
 export type NewProject = z.infer<typeof insertProjectSchema>;
 
 export const updateProjectSchema = createInsertSchema(projectTable, {
@@ -72,6 +74,20 @@ export const updateProjectSchema = createInsertSchema(projectTable, {
     val => val === "" ? undefined : val,
     z.enum(["completed", "inProgress"]).optional()
   )
+
+});
+
+
+
+// Employee
+
+export const insertEmployeeSchema = createInsertSchema(employeeTable).extend({
+  skills: selectSkillsSchema,
+  projects: selectProjectsSchema,
+});
+export type NewEmployee = z.infer<typeof insertEmployeeSchema>;
+
+export const updateEmployeeSchema = createInsertSchema(employeeTable, {
 
 });
 

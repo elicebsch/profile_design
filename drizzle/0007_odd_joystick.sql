@@ -1,1 +1,0 @@
-ALTER TABLE "mitarbeiter" ALTER COLUMN "kuerzel" DROP NOT NULL;

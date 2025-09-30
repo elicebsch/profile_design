@@ -1,7 +1,7 @@
 
 import React from 'react'
 
-import { fetchProjects, fetchProjectById} from '@/src/lib/data'
+import { fetchProjects, fetchProjectById, fetchSkills} from '@/src/lib/data'
 
 import EmployeeForm from '@/app/components/form/employee-form'
 
@@ -12,6 +12,7 @@ export default async function CreateNewEmployee() {
  
   const projects = await fetchProjects(); // ohne Angabe von id werden alle Projects gefetched --> sollte ich nicht machen, muss man trennen
   
+  const skills = await fetchSkills();
 
   // const [projects, setProjects] = useState<Project[]>([])
 
@@ -25,7 +26,9 @@ export default async function CreateNewEmployee() {
 
   return (
     <div>
-      <EmployeeForm projects={projects}/>
+      <EmployeeForm 
+      skills={skills}
+      projects={projects}/>
 
     </div>
   )

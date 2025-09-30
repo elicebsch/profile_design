@@ -10,7 +10,7 @@ import { redirect } from "next/navigation";
 import { Project } from "./validation/fetch-validation";
 import { Employee } from "./validation/fetch-validation";
 
-import { skillTable, employeeTable, projectTable } from "@/src/db/schema";
+import { skillTable, employeeTable, projectTable, employeeToSkillTable } from "@/src/db/schema";
 
 // Typen die zur Compile-Time überprüfen, ob das Datenformat stimmmt --> nützlich für die Entwicklung, aber nicht für das Deployment, denn zur Laufzeit können ja trotzdem falsche Werte reinkommen
 import {
@@ -36,7 +36,24 @@ import { eq } from "drizzle-orm";
 export async function handleCreateNewEmployee(formData: Employee) {
 
   const parsedData = insertEmployeeSchema.parse(formData); 
-  await db.insert(employeeTable).values(parsedData);
+
+  const employee = {
+    firstName: parsedData.firstName,
+    lastName: parsedData.lastName,
+    kuerzel: parsedData.kuerzel,
+  }
+  const [newEmployee] = await db.insert(employeeTable).values(employee).returning({id: employeeTable.id});
+
+  for(const s of parsedData.skills){
+    const employeeSkill = {
+      employee_id: newEmployee.id, 
+      skill_id: s.id,
+      skill_level: s.skill_level,
+    }
+    await db.insert(employeeToSkillTable).values(employeeSkill);
+  }
+
+  // same for projects as skills - because of a small error with date in project: implementation later
 
   revalidatePath('/mitarbeiter');
   redirect('/mitarbeiter');
