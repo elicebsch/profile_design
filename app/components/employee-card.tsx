@@ -18,9 +18,12 @@ function EmployeeCard({
     id,
     lastName,
     firstName,
-    kuerzel
 
-}: Employee) {
+}: {
+    id: number,
+    firstName: string,
+    lastName: string
+}) {
 
     return (
         <div className="rounded-xl bg-white shadow-md p-4 flex items-center justify-between">

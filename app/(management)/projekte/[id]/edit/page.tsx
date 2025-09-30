@@ -5,10 +5,10 @@ import { fetchProjectById } from '@/src/lib/data';
 
 import EditProjectForm from '@/app/components/form/edit_project-form';
 
-export default async function EditProjectPage({ params }: { params: { id: string } }) {
+export default async function EditProjectPage({ params }: { params: Promise<{ id: string }> }) {
 
-  const id: number = Number(params.id);
-  const project = await fetchProjectById(id)
+  const {id} = await params;
+  const project = await fetchProjectById(Number(id));
   
   return (
     <div>

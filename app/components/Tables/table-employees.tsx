@@ -4,7 +4,7 @@ import { db } from '@/src'
 import { fetchEmployeeById, fetchEmployeesBySearchParams } from '@/src/lib/data'
 import { title } from 'process';
 import EmployeeCard from '../employee-card';
-import { Employee } from '@/app/definitions';
+import { Employee } from '@/app/validation/fetch-validation';
 
 
 // soll aus EmployeeCards bestehen
@@ -34,7 +34,6 @@ async function EmployeesTable({ searchParams }
             id={e.id}
             firstName={e.firstName}
             lastName={e.lastName}
-            kuerzel={e.kuerzel}
           />
         </div>
       ))}
