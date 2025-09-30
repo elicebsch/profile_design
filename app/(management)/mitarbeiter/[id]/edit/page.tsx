@@ -5,9 +5,9 @@ import { fetchEmployeeById } from '@/src/lib/data'
 import React from 'react'
 
 
-export default async function EditPage({ params }: { params: { id: string } }) {
+export default async function EditPage({ params }: { params: Promise<{ id: string }> }) {
 
-  const { id } = params;
+  const { id } = await params;
   const data = await fetchEmployeeById(Number(id));
 
   return (
