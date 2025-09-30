@@ -26,8 +26,8 @@ async function MergePage({ params }: { params: Promise<{ id: string }> }) {
         />
       </div>
 
-      <MergeWrapper 
-      employee={employee}
+      <MergeWrapper
+        employee={employee}
       />
 
     </div>
