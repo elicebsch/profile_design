@@ -1,11 +1,20 @@
 {
+<<<<<<< HEAD
   "id": "277d5f65-1ee9-4db5-8d9f-c9fc6b1c9487",
+=======
+  "id": "4039011b-6f48-46ab-8bee-bbfdcde66326",
+>>>>>>> 2e8ce6a (save)
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
+<<<<<<< HEAD
     "public.employee": {
       "name": "employee",
+=======
+    "public.mitarbeiter": {
+      "name": "mitarbeiter",
+>>>>>>> 2e8ce6a (save)
       "schema": "",
       "columns": {
         "id": {
@@ -15,7 +24,10 @@
           "notNull": true,
           "identity": {
             "type": "byDefault",
+<<<<<<< HEAD
             "name": "employee_id_seq",
+=======
+            "name": "mitarbeiter_id_seq",
             "schema": "public",
             "increment": "1",
             "startWith": "1",
@@ -42,6 +54,176 @@
           "type": "varchar(255)",
           "primaryKey": false,
           "notNull": true
+        },
+        "skill_name": {
+          "name": "skill_name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "skill_level": {
+          "name": "skill_level",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.projects": {
+      "name": "projects",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "byDefault",
+            "name": "projects_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "market": {
+          "name": "market",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "start": {
+          "name": "start",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "end": {
+          "name": "end",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "priority": {
+          "name": "priority",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "project_manager": {
+          "name": "project_manager",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "progress": {
+          "name": "progress",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "customer": {
+          "name": "customer",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "comment": {
+          "name": "comment",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.skills": {
+      "name": "skills",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "byDefault",
+            "name": "skills_id_seq",
+>>>>>>> 2e8ce6a (save)
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+<<<<<<< HEAD
+        "firstName": {
+          "name": "firstName",
+          "type": "varchar(255)",
+=======
+        "name": {
+          "name": "name",
+          "type": "varchar(100)",
+>>>>>>> 2e8ce6a (save)
+          "primaryKey": false,
+          "notNull": false
+        },
+<<<<<<< HEAD
+        "lastName": {
+          "name": "lastName",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "kuerzel": {
+          "name": "kuerzel",
+          "type": "varchar(255)",
+=======
+        "level": {
+          "name": "level",
+          "type": "integer",
+>>>>>>> 2e8ce6a (save)
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
@@ -278,6 +460,19 @@
       ]
     }
   },
+<<<<<<< HEAD
+=======
+  "enums": {
+    "public.status": {
+      "name": "status",
+      "schema": "public",
+      "values": [
+        "completed",
+        "inProgress"
+      ]
+    }
+  },
+>>>>>>> 2e8ce6a (save)
   "schemas": {},
   "sequences": {},
   "roles": {},
